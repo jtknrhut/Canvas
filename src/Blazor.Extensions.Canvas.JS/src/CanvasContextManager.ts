@@ -124,7 +124,18 @@ export class ContextManager {
 
   private serialize = (object: any) => {
     if (object instanceof TextMetrics) {
-        return { width: object.width };
+        return { 
+          width: object.width,
+          actualBoundingBoxAscent: object.actualBoundingBoxAscent,
+          actualBoundingBoxDescent: object.actualBoundingBoxDescent,
+          actualBoundingBoxLeft: object.actualBoundingBoxLeft,
+          actualBoundingBoxRight: object.actualBoundingBoxRight,
+          alphabeticBaseline: object.alphabeticBaseline,
+          fontBoundingBoxAscent: object.fontBoundingBoxAscent,
+          fontBoundingBoxDescent: object.fontBoundingBoxDescent,
+          hangingBaseline: object.hangingBaseline,
+          ideographicBaseline: object.ideographicBaseline
+        };
     }
 
     if (!this.webGLContext || object == undefined) return object; //serialization only needs to happen for webGL
